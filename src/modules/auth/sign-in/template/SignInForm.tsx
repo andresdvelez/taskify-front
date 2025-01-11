@@ -6,6 +6,7 @@ import { EmailForm } from "../components/EmailForm";
 import { Button } from "@nextui-org/react";
 import { OTPForm } from "../components/OTPForm";
 import { PasswordForm } from "../components/PasswordForm";
+import { toast } from "sonner";
 
 export const SignInForm = () => {
   const [authMode, setAuthMode] = useState<"email" | "otp" | "password">(
@@ -31,7 +32,7 @@ export const SignInForm = () => {
   const handleOTPSubmit = async (data: { otp: string }) => {
     const success = await handleVerifyOTP(email, data.otp);
     if (success) {
-      console.log("Verification successful");
+      toast.success("Verification successful");
     }
   };
 
@@ -41,7 +42,7 @@ export const SignInForm = () => {
   }) => {
     const success = await handleSignInWithPassword(data.email, data.password);
     if (success) {
-      console.log("Sign in successful");
+      toast.success("Sign in successful");
     }
   };
 

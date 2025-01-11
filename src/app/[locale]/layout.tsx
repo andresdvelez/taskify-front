@@ -5,6 +5,7 @@ import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { geistMono, geistSans } from "@/modules/common/config/fonts-config";
 import "../../styles/globals.css";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Taskify",
@@ -34,6 +35,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
+          <Toaster richColors />
           {children}
         </NextIntlClientProvider>
       </body>

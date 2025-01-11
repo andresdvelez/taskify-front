@@ -1,4 +1,5 @@
 export interface AuthFormProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onSubmit: (data: any) => void;
   isSubmitting: boolean;
 }
