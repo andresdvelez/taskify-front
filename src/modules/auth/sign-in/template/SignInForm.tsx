@@ -7,6 +7,7 @@ import { Button } from "@nextui-org/react";
 import { OTPForm } from "../components/OTPForm";
 import { PasswordForm } from "../components/PasswordForm";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 export const SignInForm = () => {
   const [authMode, setAuthMode] = useState<"email" | "otp" | "password">(
@@ -21,6 +22,8 @@ export const SignInForm = () => {
     handleSignInWithPassword,
   } = useAuth();
 
+  const t = useTranslations("sign-in");
+
   const handleEmailSubmit = async (data: { email: string }) => {
     const success = await handleSendOTP(data.email);
     if (success) {
@@ -32,7 +35,7 @@ export const SignInForm = () => {
   const handleOTPSubmit = async (data: { otp: string }) => {
     const success = await handleVerifyOTP(email, data.otp);
     if (success) {
-      toast.success("Verification successful");
+      toast.success(t("alerts.verification-successful"));
     }
   };
 
@@ -42,7 +45,7 @@ export const SignInForm = () => {
   }) => {
     const success = await handleSignInWithPassword(data.email, data.password);
     if (success) {
-      toast.success("Sign in successful");
+      toast.success(t("alerts.sign-in-successful"));
     }
   };
 
@@ -50,7 +53,7 @@ export const SignInForm = () => {
     <div className="w-full max-w-sm mx-auto space-y-6">
       {error && (
         <div className="p-4 text-sm text-red-500 bg-red-50 rounded-lg">
-          {error}
+          {t(`errors.${error}`)}
         </div>
       )}
 
@@ -62,7 +65,9 @@ export const SignInForm = () => {
               <span className="w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-gray-500">or</span>
+              <span className="bg-background px-2 text-gray-500">
+                {t("or")}
+              </span>
             </div>
           </div>
           <Button
@@ -70,7 +75,7 @@ export const SignInForm = () => {
             onPress={() => setAuthMode("password")}
             fullWidth
           >
-            Sign in with password
+            {t("sign-in-with-password")}
           </Button>
         </>
       )}
