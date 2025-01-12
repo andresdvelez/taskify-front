@@ -10,7 +10,7 @@ export const Sidebar = () => {
   const { items, selectedId } = useSidebar();
 
   return (
-    <aside className="flex flex-col w-72">
+    <aside className="flex flex-col w-80">
       {/* Logo */}
       <div className="pb-6 px-3">
         <Logo />
