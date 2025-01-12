@@ -1,11 +1,8 @@
-import { useTranslations } from "next-intl";
+import { redirect } from "@/modules/translations/i18n/routing";
+import { useLocale } from "next-intl";
 
 export default function Home() {
-  const t = useTranslations("HomePage");
+  const locale = useLocale();
 
-  return (
-    <div className="">
-      <h1>{t("title")}</h1>
-    </div>
-  );
+  return redirect({ href: "/dashboard", locale: locale });
 }
