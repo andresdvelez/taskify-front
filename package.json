@@ -10,20 +10,25 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@iconify/json": "^2.2.294",
-    "@iconify/tailwind": "^1.2.0",
     "@nextui-org/react": "^2.6.11",
+    "@types/crypto-js": "^4.2.2",
+    "@types/js-cookie": "^3.0.6",
+    "crypto-js": "^4.2.0",
     "framer-motion": "^11.17.0",
     "i18nexus-cli": "^3.5.0",
+    "js-cookie": "^3.0.5",
     "next": "15.1.4",
     "next-intl": "^3.26.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
-    "sonner": "^1.7.1"
+    "sonner": "^1.7.1",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@iconify/json": "^2.2.294",
+    "@iconify/tailwind": "^1.2.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
