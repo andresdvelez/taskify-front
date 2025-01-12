@@ -1,10 +1,12 @@
 import { createCookieStorage } from "@/modules/common/lib/cookieStorage";
+import { UserRole } from "@/types/user.interface";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
 interface User {
   id: string;
   email: string;
+  role: UserRole;
 }
 
 interface AuthState {

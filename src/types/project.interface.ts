@@ -9,13 +9,8 @@ export interface IProject {
   id: string;
   name: string;
   description: string;
-  status: ProjectStatus;
-  startDate: Date;
-  endDate?: Date;
-  teams: string[];
   tasks: string[];
-  createdBy: string;
+  status: ProjectStatus;
   createdAt: Date;
   updatedAt: Date;
-  isArchived: boolean;
 }
