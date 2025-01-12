@@ -10,9 +10,9 @@ export const Sidebar = () => {
   const { items, selectedId } = useSidebar();
 
   return (
-    <div className="flex flex-col h-screen w-72 px-4 py-6">
+    <aside className="flex flex-col w-72">
       {/* Logo */}
-      <div className="py-6 px-3">
+      <div className="pb-6 px-3">
         <Logo />
       </div>
 
@@ -31,6 +31,6 @@ export const Sidebar = () => {
       <Card className="bg-white p-2" radius="sm" shadow="sm">
         <UserProfile name="Andres Velez" email="andres082403@gmail.com" />
       </Card>
-    </div>
+    </aside>
   );
 };
