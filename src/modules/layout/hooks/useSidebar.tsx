@@ -11,13 +11,13 @@ export type SidebarItemType = {
 export const navigationItems: SidebarItemType[] = [
   {
     id: "dashboard",
-    label: "Dashboard",
+    label: "dashboard",
     icon: <i className="icon-[mynaui--home]" role="img" aria-hidden="true"></i>,
     href: "/dashboard",
   },
   {
     id: "projects",
-    label: "Projects",
+    label: "projects",
     icon: (
       <i
         className="icon-[material-symbols--list-rounded]"
@@ -29,7 +29,7 @@ export const navigationItems: SidebarItemType[] = [
   },
   {
     id: "team",
-    label: "Team",
+    label: "team",
     icon: (
       <i
         className="icon-[ant-design--team-outlined]"

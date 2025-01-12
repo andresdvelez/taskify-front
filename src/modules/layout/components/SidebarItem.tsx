@@ -1,6 +1,7 @@
 import { cn } from "@nextui-org/react";
 import { SidebarItemType } from "../hooks/useSidebar";
 import { Link } from "@/modules/translations/i18n/routing";
+import { useTranslations } from "next-intl";
 
 interface SidebarItemProps {
   item: SidebarItemType;
@@ -9,6 +10,8 @@ interface SidebarItemProps {
 
 export function SidebarItem({ item, isSelected }: SidebarItemProps) {
   const { label, icon, href } = item;
+
+  const t = useTranslations("sidebar");
 
   return (
     <Link
@@ -20,7 +23,7 @@ export function SidebarItem({ item, isSelected }: SidebarItemProps) {
       )}
     >
       <span className="text-lg">{icon}</span>
-      {label}
+      {t(label)}
     </Link>
   );
 }

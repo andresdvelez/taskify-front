@@ -6,6 +6,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@nextui-org/react";
+import { useTranslations } from "next-intl";
 
 interface UserProfileProps {
   name: string;
@@ -15,6 +16,8 @@ interface UserProfileProps {
 
 export function UserProfile({ name, email, imageUrl }: UserProfileProps) {
   const { isLoading, signOut } = useSignOut();
+
+  const t = useTranslations("sidebar");
 
   return (
     <div className="flex items-center justify-between p-0">
@@ -54,7 +57,7 @@ export function UserProfile({ name, email, imageUrl }: UserProfileProps) {
               ></i>
             }
           >
-            Sign out
+            {t("sign-out")}
           </Button>
         </PopoverContent>
       </Popover>
