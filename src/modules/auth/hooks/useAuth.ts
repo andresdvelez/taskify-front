@@ -10,7 +10,8 @@ export const useAuth = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-  const { setUser, signOut } = useAuthStore();
+  const setUser = useAuthStore((state) => state.setUser);
+  const signOut = useAuthStore((state) => state.signOut);
 
   const handleSendOTP = async (email: string) => {
     try {
