@@ -48,7 +48,7 @@ export const ProjectsTable = () => {
             key={item.id}
           >
             {(columnKey) => (
-              <TableCell>{RenderCell(item, columnKey)}</TableCell>
+              <TableCell>{RenderCell(item, columnKey).toString()}</TableCell>
             )}
           </TableRow>
         )}

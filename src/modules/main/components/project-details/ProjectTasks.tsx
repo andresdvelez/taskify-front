@@ -86,7 +86,10 @@ export const ProjectTasks = ({ projectId }: ProjectTasksProps) => {
               >
                 {tasksColumns.map((column) => (
                   <TableCell key={`${task.id}-${column.uid}`}>
-                    {RenderCellTasks(task, column.uid as keyof ITask)}
+                    {RenderCellTasks(
+                      task,
+                      column.uid as keyof ITask
+                    )?.toString()}
                   </TableCell>
                 ))}
               </TableRow>

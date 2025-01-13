@@ -13,4 +13,5 @@ export interface IProject {
   status: ProjectStatus;
   createdAt: Date;
   updatedAt: Date;
+  numberOfTasks: number;
 }

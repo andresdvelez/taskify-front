@@ -19,9 +19,9 @@ export interface ITask {
   projectId: string;
   assignedTo: string[];
   createdBy: string;
-  deadline: Date;
+  deadline: Date | string;
   comments: string[];
-  createdAt: Date;
-  updatedAt: Date;
-  completedAt?: Date;
+  createdAt: Date | string;
+  updatedAt: Date | string;
+  completedAt?: Date | string;
 }

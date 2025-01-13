@@ -19,7 +19,6 @@ export const fetchTasksForProject = async (
       comments: [],
       createdAt: new Date("2024-01-10"),
       updatedAt: new Date("2024-01-12"),
-      isArchived: false,
     },
   ];
 
