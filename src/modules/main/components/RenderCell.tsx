@@ -1,8 +1,9 @@
 import { Chip, Tooltip } from "@nextui-org/react";
 import { Project } from "./ProjectsTable";
 import { formatDate } from "@/modules/common/utils/formatDate";
+import { IProject } from "@/types/project.interface";
 
-export const RenderCell = (project: Project, columnKey: React.Key) => {
+export const RenderCell = (project: IProject, columnKey: React.Key) => {
   switch (columnKey) {
     case "name":
       return (

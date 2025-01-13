@@ -24,5 +24,4 @@ export interface ITask {
   createdAt: Date;
   updatedAt: Date;
   completedAt?: Date;
-  isArchived: boolean;
 }

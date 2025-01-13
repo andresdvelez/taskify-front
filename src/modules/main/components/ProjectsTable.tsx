@@ -11,6 +11,7 @@ import {
   TableRow,
 } from "@nextui-org/react";
 import { RenderCell } from "./RenderCell";
+import { useRouter } from "@/modules/translations/i18n/routing";
 
 export interface Project {
   id: string;
@@ -20,6 +21,8 @@ export interface Project {
 }
 
 export const ProjectsTable = () => {
+  const router = useRouter();
+
   return (
     <Table
       aria-label="Projects table"
@@ -39,7 +42,11 @@ export const ProjectsTable = () => {
       </TableHeader>
       <TableBody items={projects}>
         {(item) => (
-          <TableRow key={item.id}>
+          <TableRow
+            onClick={() => router.push(`/projects/${item.id}`)}
+            className="hover:bg-black/5 transition-colors h-[50px] cursor-pointer group rounded-2xl"
+            key={item.id}
+          >
             {(columnKey) => (
               <TableCell>{RenderCell(item, columnKey)}</TableCell>
             )}
