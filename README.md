@@ -7,6 +7,9 @@
 
 Taskify Frontend is a modern, responsive web application built using Next.js 15, implementing a Screaming Architecture pattern for clear and maintainable code organization. The application provides an intuitive interface for managing tasks, projects, and team collaboration.
 
+## Notion
+[Link of Notion](https://aspiring-plum-d49.notion.site/17ece7ae9590808498e3d8164f9eb34a?v=17ece7ae959081d2b991000c95572145)
+
 ## Architecture
 
 The project follows Screaming Architecture principles, where the directory structure immediately reveals the business domain:
