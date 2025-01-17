@@ -14,7 +14,7 @@ export const updateProjectStatus = async ({
   token,
 }: Props) => {
   try {
-    const { data: invitation } = await axios.patch(
+    const { data: projectUpdated } = await axios.patch(
       `${BACKEND_URL}/projects/update-status`,
       {
         id: projectId,
@@ -27,7 +27,7 @@ export const updateProjectStatus = async ({
       }
     );
 
-    return await invitation;
+    return projectUpdated;
   } catch (error) {
     throw error;
   }

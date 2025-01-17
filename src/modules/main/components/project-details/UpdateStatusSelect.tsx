@@ -3,6 +3,7 @@ import { Select, SelectItem } from "@nextui-org/react";
 import { updateProjectStatus } from "../../services/updateProjectStatus";
 import { ProjectStatus } from "@/types/project.interface";
 import { toast } from "sonner";
+import { useProjectStore } from "@/store/projects-store";
 const status = ["active", "on_hold", "completed", "archived"];
 
 export const UpdateStatusSelect = ({
@@ -13,14 +14,16 @@ export const UpdateStatusSelect = ({
   projectStatus: ProjectStatus;
 }) => {
   const user = useAuthStore((state) => state.user);
+  const updateProject = useProjectStore((state) => state.updateProject);
 
   const handleUpdateStatus = async (newStatus: ProjectStatus) => {
     try {
-      await updateProjectStatus({
+      const updatedProject = await updateProjectStatus({
         projectId,
         status: newStatus,
         token: user?.authToken as string,
       });
+      updateProject(projectId, updatedProject);
       toast.success("Stado actualizado");
     } catch {
       toast.success("Ocurrió un error");
