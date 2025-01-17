@@ -30,14 +30,14 @@ export const OTPForm = ({
           {...register("otp", {
             required: t("errors.otp-is-required"),
             pattern: {
-              value: /^[0-9]{4}$/,
+              value: /^[0-9]{6}$/,
               message: t("please-enter-a-valid-4-digit-code"),
             },
           })}
           type="text"
           label={t("code")}
           inputMode="numeric"
-          maxLength={4}
+          maxLength={6}
           placeholder="0000"
           errorMessage={errors.otp?.message as string}
           isInvalid={!!errors.otp}

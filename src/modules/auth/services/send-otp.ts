@@ -1,10 +1,10 @@
+import { BACKEND_URL } from "@/modules/constants/backend-url";
+import axios from "axios";
+
 export const sendOTP = async (email: string) => {
-  console.log(email);
-  // Implement your API call here
-  // const response = await fetch('/api/send-otp', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify({ email })
-  // });
-  // return response.json();
+  try {
+    await axios.post(`${BACKEND_URL}/users/otp`, { email });
+  } catch (error) {
+    throw error;
+  }
 };

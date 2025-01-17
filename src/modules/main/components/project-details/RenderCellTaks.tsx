@@ -21,10 +21,11 @@ export const RenderCellTasks = (
         </Chip>
       );
     case "deadline":
-      return formatDate(task.deadline);
+      return task.deadline ? formatDate(task.deadline) : "";
     case "assignedTo":
       return task.assignedTo.join(", ");
     default:
-      return task[columnKey as keyof ITask];
+      const value = task[columnKey as keyof ITask];
+      return value?.toString() ?? "";
   }
 };

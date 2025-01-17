@@ -6,12 +6,10 @@ export enum UserRole {
 export interface IUser {
   id: string;
   email: string;
-  password: string;
   firstName: string;
   lastName: string;
   role: UserRole;
   createdAt: Date;
-  updatedAt: Date;
-  isActive: boolean;
-  teams?: string[];
+  authToken: string;
+  projects: string[];
 }

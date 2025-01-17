@@ -10,6 +10,7 @@ import {
 } from "@nextui-org/react";
 import { Controller } from "react-hook-form";
 import { useProjectForm } from "../../hooks/useProjectForm";
+import { useProjectStore } from "@/store/projects-store";
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -17,7 +18,9 @@ interface ProjectModalProps {
 }
 
 export const CreateNewModal = ({ isOpen, onClose }: ProjectModalProps) => {
-  const { handleSubmit, onSubmit, control, errors } = useProjectForm();
+  const { handleSubmit, onSubmit, control, errors } = useProjectForm(onClose);
+
+  const isLoading = useProjectStore((state) => state.isLoading);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="2xl">
@@ -63,7 +66,7 @@ export const CreateNewModal = ({ isOpen, onClose }: ProjectModalProps) => {
             <Button color="danger" variant="light" onPress={onClose}>
               Cancel
             </Button>
-            <Button color="primary" type="submit">
+            <Button isLoading={isLoading} color="primary" type="submit">
               Create Project
             </Button>
           </ModalFooter>

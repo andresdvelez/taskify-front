@@ -16,12 +16,11 @@ export interface ITask {
   description: string;
   status: TaskStatus;
   priority: TaskPriority;
-  projectId: string;
   assignedTo: string[];
   createdBy: string;
   deadline: Date | string;
   comments: string[];
+  projectId: string;
   createdAt: Date | string;
   updatedAt: Date | string;
-  completedAt?: Date | string;
 }

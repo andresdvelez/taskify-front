@@ -41,7 +41,7 @@ export const PasswordForm = ({
           {...register("password", {
             required: t("password-is-required"),
             minLength: {
-              value: 8,
+              value: 6,
               message: t("errors.password-must-be-at-least-8-characters"),
             },
           })}

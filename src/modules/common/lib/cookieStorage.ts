@@ -6,11 +6,18 @@ export const createCookieStorage = (): StateStorage => ({
   getItem: (name: string): string | null => {
     try {
       const value = Cookies.get(name);
-      if (!value) return null;
-      const decrypted = decryptData(value);
-      return decrypted;
-    } catch (error) {
-      console.error("Error reading cookie:", error);
+
+      if (!value) {
+        return null;
+      }
+
+      try {
+        const decrypted = decryptData(value);
+        return decrypted;
+      } catch {
+        return null;
+      }
+    } catch {
       return null;
     }
   },
