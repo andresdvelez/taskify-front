@@ -1,111 +1,95 @@
 <p align="center">
-  <h1 align="center">Taskify Backend</h1>
-  <p align="center">A powerful microservices-based task management system built with NestJS</p>
+  <h1 align="center">Taskify Frontend</h1>
+  <p align="center">Modern task management interface built with Next.js 15 and Screaming Architecture</p>
 </p>
 
 ## Overview
 
-Taskify Backend is a robust task management system built using a microservices architecture with NestJS. The system consists of multiple services handling users, projects, and tasks, orchestrated through an API gateway.
+Taskify Frontend is a modern, responsive web application built using Next.js 15, implementing a Screaming Architecture pattern for clear and maintainable code organization. The application provides an intuitive interface for managing tasks, projects, and team collaboration.
+
+## Architecture
+
+The project follows Screaming Architecture principles, where the directory structure immediately reveals the business domain:
+
+```
+src/
+├── auth/           # Authentication related features
+├── projects/       # Project management domain
+├── common/         # Shared components and utilities
+└── main/           # Core application setup
+```
 
 ## Prerequisites
 
-- Node.js (v22 or higher)
-- PostgreSQL
-- bun
+- [Bun](https://bun.sh/) (Recommended)
+- Node.js 22+ (If not using Bun)
 
-## Installation & Setup
+## Quick Start
 
 1. **Clone the Repository**
 
    ```bash
-   git clone git@github.com:andresdvelez/taskify-back.git
-   cd taskify-backend
+   git clone https://github.com/andresdvelez/taskify-front.git
+   cd taskify-front
    ```
 
-2. **Environment Configuration**
+2. **Environment Setup**
 
    ```bash
-   # Copy the environment template file
+   # Copy the environment template
    cp .env.template .env
    ```
 
-3. **Configure Database**
+3. **Install Dependencies**
 
-   - Create a PostgreSQL database for the project
-   - Update the following environment variables in your `.env` file:
-     ```
-     DB_HOST=your_host
-     DB_PORT=your_port
-     DB_USERNAME=your_username
-     DB_PASSWORD=your_password
-     DB_DATABASE=your_database_name
-     ```
-
-4. **Install Dependencies**
    ```bash
+   # Using Bun (Recommended)
+   bun install
+
+   # Or using npm
    npm install
    ```
 
-## Running the Application
-
-Start each microservice in a separate terminal:
-
-1. **Users Service**
+4. **Start Development Server**
 
    ```bash
-   bun run start users
+   # Using Bun
+   bun dev
+
+   # Or using npm
+   npm run dev
    ```
 
-2. **Projects Service**
+   The application will be available at `http://localhost:3000`
 
-   ```bash
-   bun run start projects
-   ```
+## Development
 
-3. **Tasks Service**
+### Environment Variables
 
-   ```bash
-   bun run start tasks
-   ```
+Ensure your `.env` file contains the necessary variables:
 
-4. **API Gateway**
-   ```bash
-   bun run start taskify-api-gateway
-   ```
-
-## Initial Setup
-
-### Creating the First Admin User
-
-After starting all services, you'll need to create the first admin user to access the system. Use the following endpoint:
-
-**Endpoint:** `http://localhost:3001/users`
-
-**Method:** POST
-
-**Payload Template:**
-
-```json
-{
-  "email": "admin@example.com",
-  "firstName": "Admin",
-  "lastName": "User",
-  "role": "admin",
-  "otp": null,
-  "otpExpiry": null,
-  "password": "your_secure_password",
-  "projects": []
-}
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3000
+I18NEXUS_API_KEY
 ```
 
-Once the admin user is created, you can use the frontend application to create additional users and manage the system.
+### Available Scripts
 
-## Services Architecture
+```bash
+# Development
+bun dev         # Start development server
 
-- **API Gateway** (Port: 3001) - Main entry point for client applications
-- **Users Service** (Port: 4001) - Handles user management and authentication
-- **Projects Service** (Port: 4002) - Manages project-related operations
-- **Tasks Service** (Port: 4003) - Handles task creation and management
+# Building
+bun run build   # Create production build
+bun start       # Start production server
+
+```
+
+## Features
+
+- 🔒 Secure authentication system with OTP code
+- 📊 Project management dashboard
+- ✅ Task tracking and management
 
 ## License
 
