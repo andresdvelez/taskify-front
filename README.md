@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p align="center">
+  <h1 align="center">Taskify Backend</h1>
+  <p align="center">A powerful microservices-based task management system built with NestJS</p>
+</p>
 
-## Getting Started
+## Overview
 
-First, run the development server:
+Taskify Backend is a robust task management system built using a microservices architecture with NestJS. The system consists of multiple services handling users, projects, and tasks, orchestrated through an API gateway.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Prerequisites
+
+- Node.js (v22 or higher)
+- PostgreSQL
+- bun
+
+## Installation & Setup
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone git@github.com:andresdvelez/taskify-back.git
+   cd taskify-backend
+   ```
+
+2. **Environment Configuration**
+
+   ```bash
+   # Copy the environment template file
+   cp .env.template .env
+   ```
+
+3. **Configure Database**
+
+   - Create a PostgreSQL database for the project
+   - Update the following environment variables in your `.env` file:
+     ```
+     DB_HOST=your_host
+     DB_PORT=your_port
+     DB_USERNAME=your_username
+     DB_PASSWORD=your_password
+     DB_DATABASE=your_database_name
+     ```
+
+4. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+
+## Running the Application
+
+Start each microservice in a separate terminal:
+
+1. **Users Service**
+
+   ```bash
+   bun run start users
+   ```
+
+2. **Projects Service**
+
+   ```bash
+   bun run start projects
+   ```
+
+3. **Tasks Service**
+
+   ```bash
+   bun run start tasks
+   ```
+
+4. **API Gateway**
+   ```bash
+   bun run start taskify-api-gateway
+   ```
+
+## Initial Setup
+
+### Creating the First Admin User
+
+After starting all services, you'll need to create the first admin user to access the system. Use the following endpoint:
+
+**Endpoint:** `http://localhost:3001/users`
+
+**Method:** POST
+
+**Payload Template:**
+
+```json
+{
+  "email": "admin@example.com",
+  "firstName": "Admin",
+  "lastName": "User",
+  "role": "admin",
+  "otp": null,
+  "otpExpiry": null,
+  "password": "your_secure_password",
+  "projects": []
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Once the admin user is created, you can use the frontend application to create additional users and manage the system.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Services Architecture
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **API Gateway** (Port: 3001) - Main entry point for client applications
+- **Users Service** (Port: 4001) - Handles user management and authentication
+- **Projects Service** (Port: 4002) - Manages project-related operations
+- **Tasks Service** (Port: 4003) - Handles task creation and management
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
