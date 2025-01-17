@@ -10,28 +10,38 @@ interface ProjectDetailsProps {
 }
 
 const ProjectDetails = async ({ params }: ProjectDetailsProps) => {
-  const id = (await params).id;
-  const locale = (await params).locale;
+  const { id, locale } = await params;
 
-  const response = await fetch("http://localhost:3000/api/state-user").then(
-    (res) => res.json()
-  );
+  try {
+    const response = await fetch("http://localhost:3000/api/state-user", {
+      cache: "no-store",
+    });
 
-  if (!response?.message) return redirect({ href: "/dashboard", locale });
+    if (!response.ok) {
+      throw new Error("Failed to fetch auth state");
+    }
 
-  const project = await fetchProjectById(id, response?.message);
+    const data = await response.json();
 
-  if (!project) {
-    return <ProjectNotFound />;
+    if (!data?.message) {
+      return redirect({ href: "/dashboard", locale });
+    }
+
+    const project = await fetchProjectById(id, data.message);
+
+    if (!project) return <ProjectNotFound />;
+
+    return (
+      <>
+        <ProjectHeader project={project} />
+        <ProjectDescription project={project} />
+        <ProjectTasks tasksIds={project.tasks} projectId={project.id} />
+      </>
+    );
+  } catch (error) {
+    console.error("Error in ProjectDetails:", error);
+    return redirect({ href: "/dashboard", locale });
   }
-
-  return (
-    <>
-      <ProjectHeader project={project} />
-      <ProjectDescription project={project} />
-      <ProjectTasks tasksIds={project.tasks} projectId={project.id} />
-    </>
-  );
 };
 
 export default ProjectDetails;
