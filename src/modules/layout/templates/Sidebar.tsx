@@ -29,7 +29,7 @@ export const Sidebar = () => {
 
       {/* User Profile */}
       <Card className="bg-white p-2" radius="sm" shadow="sm">
-        <UserProfile name="Andres Velez" email="andres082403@gmail.com" />
+        <UserProfile />
       </Card>
     </aside>
   );

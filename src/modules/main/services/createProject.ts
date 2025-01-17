@@ -1,28 +1,23 @@
+import { BACKEND_URL } from "@/modules/constants/backend-url";
 import { IProject } from "@/types/project.interface";
+import axios from "axios";
 
 export const createProject = async (
-  projectData: Partial<IProject>
+  projectData: Partial<IProject>,
+  token: string
 ): Promise<IProject> => {
-  // TODO: Implement API call
-  // const response = await fetch('/api/projects', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify(projectData),
-  // });
-
-  // if (!response.ok) {
-  //   throw new Error('Failed to create project');
-  // }
-
-  // return response.json();
-
-  return {
-    ...projectData,
-    id: crypto.randomUUID(),
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    tasks: [],
-  } as IProject;
+  try {
+    const { data: newProject } = await axios.post(
+      `${BACKEND_URL}/projects`,
+      projectData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return newProject;
+  } catch (error) {
+    throw error;
+  }
 };

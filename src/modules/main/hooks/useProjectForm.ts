@@ -6,14 +6,17 @@ import { toast } from "sonner";
 import { error } from "@/types/errors";
 import { projectSchema } from "../lib/schemas/createrojectSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useProjectStore } from "@/store/projects-store";
 
 type ProjectFormData = Omit<
   IProject,
   "id" | "createdAt" | "updatedAt" | "createdBy" | "tasks"
 >;
 
-export const useProjectForm = () => {
+export const useProjectForm = (onClose: () => void) => {
   const user = useAuthStore((state) => state.user);
+  const addProject = useProjectStore((state) => state.addProject);
+  const setIsLoading = useProjectStore((state) => state.setIsLoading);
 
   const {
     control,
@@ -32,17 +35,22 @@ export const useProjectForm = () => {
   const onSubmit = async (data: ProjectFormData) => {
     try {
       if (!user) return;
+      setIsLoading(true);
 
       const projectData: Partial<IProject> = {
         ...data,
-        status: ProjectStatus.ACTIVE,
-        tasks: [],
+        createdBy: user.id,
       };
 
-      await createProject(projectData);
+      const newProject = await createProject(projectData, user.authToken);
+      addProject(newProject);
 
+      onClose();
       reset();
+      setIsLoading(false);
+      toast.success("Project created");
     } catch (error) {
+      setIsLoading(false);
       toast.error((error as error).message);
     }
   };

@@ -17,8 +17,7 @@ function getIsAuthenticated(request: NextRequest): boolean {
     const decrypted = decryptData(authCookie.value);
     const authData = JSON.parse(decrypted);
     return !!authData?.state?.user;
-  } catch (error) {
-    console.error("Error reading auth cookie:", error);
+  } catch {
     return false;
   }
 }

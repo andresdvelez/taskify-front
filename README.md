@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p align="center">
+  <h1 align="center">Taskify Frontend</h1>
+  <p align="center">Modern task management interface built with Next.js 15 and Screaming Architecture</p>
+</p>
 
-## Getting Started
+## Overview
 
-First, run the development server:
+Taskify Frontend is a modern, responsive web application built using Next.js 15, implementing a Screaming Architecture pattern for clear and maintainable code organization. The application provides an intuitive interface for managing tasks, projects, and team collaboration.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Architecture
+
+The project follows Screaming Architecture principles, where the directory structure immediately reveals the business domain:
+
+```
+src/
+├── auth/           # Authentication related features
+├── projects/       # Project management domain
+├── common/         # Shared components and utilities
+└── main/           # Core application setup
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Prerequisites
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Bun](https://bun.sh/) (Recommended)
+- Node.js 22+ (If not using Bun)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Quick Start
 
-## Learn More
+1. **Clone the Repository**
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   git clone https://github.com/andresdvelez/taskify-front.git
+   cd taskify-front
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Environment Setup**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   # Copy the environment template
+   cp .env.template .env
+   ```
 
-## Deploy on Vercel
+3. **Install Dependencies**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   # Using Bun (Recommended)
+   bun install
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   # Or using npm
+   npm install
+   ```
+
+4. **Start Development Server**
+
+   ```bash
+   # Using Bun
+   bun dev
+
+   # Or using npm
+   npm run dev
+   ```
+
+   The application will be available at `http://localhost:3000`
+
+## Development
+
+### Environment Variables
+
+Ensure your `.env` file contains the necessary variables:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3000
+I18NEXUS_API_KEY
+```
+
+### Available Scripts
+
+```bash
+# Development
+bun dev         # Start development server
+
+# Building
+bun run build   # Create production build
+bun start       # Start production server
+
+```
+
+## Features
+
+- 🔒 Secure authentication system with OTP code
+- 📊 Project management dashboard
+- ✅ Task tracking and management
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

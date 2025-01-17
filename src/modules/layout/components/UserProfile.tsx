@@ -1,33 +1,32 @@
 import { useSignOut } from "@/modules/common/hooks/useSignOut";
+import { useAuthStore } from "@/store/auth-store";
 import {
-  Avatar,
   Button,
   Popover,
   PopoverContent,
   PopoverTrigger,
+  User,
 } from "@nextui-org/react";
 import { useTranslations } from "next-intl";
 
-interface UserProfileProps {
-  name: string;
-  email: string;
-  imageUrl?: string;
-}
+export function UserProfile() {
+  const user = useAuthStore((state) => state.user);
 
-export function UserProfile({ name, email, imageUrl }: UserProfileProps) {
   const { isLoading, signOut } = useSignOut();
 
   const t = useTranslations("sidebar");
 
+  if (!user) return null;
+
   return (
     <div className="flex items-center justify-between p-0">
-      <div className="flex items-center gap-3">
-        <Avatar src={imageUrl} fallback={name[0]}></Avatar>
-        <div className="flex flex-col">
-          <span className="text-sm font-medium">{name}</span>
-          <span className="text-xs text-gray-500">{email}</span>
-        </div>
-      </div>
+      <User
+        avatarProps={{
+          src: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+        }}
+        description={user.email}
+        name={`${user.firstName} ${user.lastName}`}
+      />
       <Popover placement="top" radius="sm" shadow="md">
         <PopoverTrigger>
           <Button

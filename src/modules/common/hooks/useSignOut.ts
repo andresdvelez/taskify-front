@@ -14,6 +14,7 @@ export const useSignOut = () => {
     setIsLoading(true);
     try {
       Cookies.remove("auth-storage");
+      Cookies.remove("project-storage");
       router.push(`/sign-in`);
       toast.success(t("sign-out-success"));
     } catch (error) {

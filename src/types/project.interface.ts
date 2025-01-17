@@ -13,4 +13,6 @@ export interface IProject {
   status: ProjectStatus;
   createdAt: Date;
   updatedAt: Date;
+  createdBy: string;
+  assignees: string[];
 }

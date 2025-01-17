@@ -5,6 +5,7 @@ import { signInWithPassword } from "../services/sign-in-with-password";
 import { error } from "@/types/errors";
 import { useRouter } from "@/modules/translations/i18n/routing";
 import { useAuthStore } from "@/store/auth-store";
+import { toast } from "sonner";
 
 export const useAuth = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +21,7 @@ export const useAuth = () => {
       await sendOTP(email);
       return true;
     } catch (err) {
-      setError((err as error).message);
+      toast.error((err as error).message);
       return false;
     } finally {
       setIsLoading(false);
@@ -36,7 +37,7 @@ export const useAuth = () => {
       router.push(`/dashboard`);
       return true;
     } catch (err) {
-      setError((err as error).message);
+      toast.error((err as error).message);
       return false;
     } finally {
       setIsLoading(false);
@@ -52,7 +53,7 @@ export const useAuth = () => {
       router.push(`/dashboard`);
       return true;
     } catch (err) {
-      setError((err as error).message);
+      toast.error((err as error).message);
       return false;
     } finally {
       setIsLoading(false);
@@ -65,7 +66,7 @@ export const useAuth = () => {
       signOut();
       router.push(`/sign-in`);
     } catch (err) {
-      setError((err as error).message);
+      toast.error((err as error).message);
     } finally {
       setIsLoading(false);
     }

@@ -16,7 +16,6 @@ export const SignInForm = () => {
   const [email, setEmail] = useState("");
   const {
     isLoading,
-    error,
     handleSendOTP,
     handleVerifyOTP,
     handleSignInWithPassword,
@@ -51,12 +50,6 @@ export const SignInForm = () => {
 
   return (
     <div className="w-full max-w-sm mx-auto space-y-6">
-      {error && (
-        <div className="p-4 text-sm text-red-500 bg-red-50 rounded-lg">
-          {t(`errors.${error}`)}
-        </div>
-      )}
-
       {authMode === "email" && (
         <>
           <EmailForm onSubmit={handleEmailSubmit} isSubmitting={isLoading} />
@@ -65,9 +58,7 @@ export const SignInForm = () => {
               <span className="w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-gray-500">
-                {t("or")}
-              </span>
+              <span className="bg-gray-50 px-2 text-gray-500">{t("or")}</span>
             </div>
           </div>
           <Button
