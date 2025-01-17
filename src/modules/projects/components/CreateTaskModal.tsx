@@ -23,7 +23,7 @@ type CreateTaskForm = z.infer<typeof createTaskSchema>;
 interface CreateTaskModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onCreateTask: (task: Partial<ITask>) => Promise<void>;
+  onCreateTask: (task: Partial<ITask>) => Promise<boolean>;
   projectId: string;
 }
 

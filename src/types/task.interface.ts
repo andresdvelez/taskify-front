@@ -24,3 +24,12 @@ export interface ITask {
   createdAt: Date | string;
   updatedAt: Date | string;
 }
+
+export interface TaskFilters {
+  status?: TaskStatus;
+  priority?: TaskPriority;
+  search?: string;
+  deadlineStart?: string;
+  deadlineEnd?: string;
+  assignedTo?: string[];
+}
