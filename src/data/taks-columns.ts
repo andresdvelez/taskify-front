@@ -3,4 +3,5 @@ export const tasksColumns = [
   { name: "STATUS", uid: "status" },
   { name: "PRIORITY", uid: "priority" },
   { name: "DEADLINE", uid: "deadline" },
+  { name: "ACTIONS", uid: "actions" },
 ];

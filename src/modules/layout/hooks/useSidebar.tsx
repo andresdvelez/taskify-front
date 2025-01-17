@@ -16,18 +16,6 @@ export const navigationItems: SidebarItemType[] = [
     href: "/dashboard",
   },
   {
-    id: "projects",
-    label: "projects",
-    icon: (
-      <i
-        className="icon-[material-symbols--list-rounded]"
-        role="img"
-        aria-hidden="true"
-      ></i>
-    ),
-    href: "/projects",
-  },
-  {
     id: "team",
     label: "team",
     icon: (
